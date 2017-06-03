@@ -73,4 +73,37 @@ let sendQuickReplyMessage = (userId, text, quickReplyButtons, cb) => {
   });
 }
 
-export { getProfileDetail, sendTextMessage, sendQuickReplyMessage};
+let sendGenericTemplate = (userId, elements, cb) => {
+  let fbData = {
+    recipient: {id: userId},
+    message: {
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": elements
+        }
+      }
+    }
+  }
+
+  request({
+    url: config.facebook.facebook_url+'/me/messages',
+    qs: { access_token: config.facebook.page_token },
+    method: 'POST',
+    json: fbData
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+      cb();
+    } else if (response.body.error) {
+      console.log('Error: SendGenericTemplate===', response.body.error);
+      cb();
+    } else {
+      console.log("===Success==SendGenericTemplate=");
+      cb();
+    }
+  });
+}
+
+export { getProfileDetail, sendTextMessage, sendQuickReplyMessage, sendGenericTemplate};

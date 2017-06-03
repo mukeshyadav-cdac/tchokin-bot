@@ -2,31 +2,6 @@ import config from '../config.json';
 import * as facebookMessage from '../facebook/facebook_messages.js';
 import request from 'request';
 
-let getValidateToken = (req, res) => {
-  if(req.query['hub.verify_token'] === config.facebook.verification_token) {
-    return res.status(200).send(req.query['hub.challenge']);
-  } else {
-    res.status(500).send({"status": "error", "responseMessage": "Wrong verification token."});
-  }
-}
-
-let getFBMessage = (req, res) => {
-  let data = req.body;
-  if (data.object === 'page') {
-    data.entry.forEach( (entry) => {
-      let pageID = entry.id;
-      entry.messaging.forEach( (event)  => {
-        if(event.postback) {
-          facebookMessage.receivedPostbackMessage(event);
-        } else {
-          console.log("Webhook received unknown event: ", event);
-        }
-      });
-    });
-    res.sendStatus(200);
-  }
-};
-
 let setGreetingText = (req, res) => {
   let fbData = {
     "greeting":[
@@ -69,5 +44,32 @@ let setGetStartedButton = (req, res) => {
     res.status(200).send(body);
   });
 }
+
+let getValidateToken = (req, res) => {
+  if(req.query['hub.verify_token'] === config.facebook.verification_token) {
+    return res.status(200).send(req.query['hub.challenge']);
+  } else {
+    res.status(500).send({"status": "error", "responseMessage": "Wrong verification token."});
+  }
+}
+
+let getFBMessage = (req, res) => {
+  let data = req.body;
+  if (data.object === 'page') {
+    data.entry.forEach( (entry) => {
+      let pageID = entry.id;
+      entry.messaging.forEach( (event)  => {
+        if(event.postback) {
+          facebookMessage.receivedPostbackMessage(event);
+        } else {
+          console.log("Webhook received unknown event: ", event);
+        }
+      });
+    });
+    res.sendStatus(200);
+  }
+};
+
+
 
 export { getValidateToken, getFBMessage, setGreetingText, setGetStartedButton };

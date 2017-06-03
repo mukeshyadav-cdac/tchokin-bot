@@ -15,12 +15,12 @@ let getStartedButtonCallback =  (event) => {
       timezone: parseInt(facebookUserDetail.timezone),
       platform: config.app.platform,
       bot: config.app.bot,
-      payload: 'sign_up',
+      payload: 'get_started',
       isSetIntent: true
     }
 
-    userInteraction(inputData, function(response) {
-      respondToUser(response);
+    userInteraction(inputData, function(outputData) {
+      respondToUser(outputData);
     });
   });
 }

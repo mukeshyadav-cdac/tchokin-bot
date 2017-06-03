@@ -1,7 +1,8 @@
 {
-    "recast_client_key": "0df7eb6adfa6d90318631eb01e6e9c5f",
-    "get_started_one": "Hello 🙋 ",
-    "get_started_two": " How are you today ? I am Goyabot - I keep track of 📰 news and 🗞 stories on the Internet.  Before you begin, I would like to ask a few things to get you better news.",
+    "get_started_one": "Hi {user_name}, I'm Tchok, and if you let me, I'll be your 💊 coach.",
+    "get_started_two": "First, I want to thank you for trying out our early prototype of best and simplest tool to help you control your spending and fill up piggy bank.",
+    "get_started_three": "Have a look at menu  below and let's get started.",
+
     "bot_ask_category_topic": "Thanks! I will filter and prioritise news coming from {location} before all other news.",
     "before_location_msg": "📍Location helps me track and 🚨 alert you to the most relevant news around you. Would you like to share your location ?",
     "get_started": "🙋‍♂️👋 Welcome back! Ready to get some Goya dose...",
