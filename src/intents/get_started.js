@@ -7,16 +7,16 @@ let  startList = [
       "payload": "START_ANALYSIS"
     },
     {
-      "title": "Spending Analysis-2",
-      "overview": "Start here to setup your Weekly Allownace and Monthly Savings targets.",
-      "buttonTitle": "Start Analysis-2",
-      "payload": "start_analysis-2"
+      "title": "How does it work?",
+      "overview": "More detail on how we setup your Weekly Allownace and Monthly Savings",
+      "buttonTitle": "Tell me more",
+      "payload": "TELL_ME_MORE"
     },
     {
-      "title": "Spending Analysis-3",
-      "overview": "Start here to setup your Weekly Allownace and Monthly Savings targets.",
-      "buttonTitle": "Start Analysis-3",
-      "payload": "start_analysis-3"
+      "title": "What can I expect?",
+      "overview": "one week in the life of a Tchokin.in user with coach Tchok.",
+      "buttonTitle": "Show me examples",
+      "payload": "SHOW_ME_EXAMPLES"
     }
   ]
 
@@ -31,12 +31,12 @@ let intent = (inputData, object, cb) => {
     postId: null
   };
 
-  let welcomeResponseText = content.get_started_one + ',' + content.get_started_two + ',' + content.get_started_three;
+  let welcomeResponseText = content.get_started_one + '++' + content.get_started_two + '++' + content.get_started_three;
 
   platformTemplate.createGenericTemplate(inputData, startList, function(genericTemplate) {
     let outputData = {
       userId: inputData.userId,
-      responseType: 'TEXT_WITH_GENERIC_TEMPLATE',
+      responseType: 'THREE_TEXT_WITH_GENERIC_TEMPLATE',
       responseText: welcomeResponseText,
       responseImage: null,
       responseAudio: null,
