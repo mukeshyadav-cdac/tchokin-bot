@@ -4,32 +4,24 @@ let  startList = [
       "title": "Spending Analysis",
       "overview": "Start here to setup your Weekly Allownace and Monthly Savings targets.",
       "buttonTitle": "Start Analysis",
-      "payload": "START_ANALYSIS"
+      "payload": "start_analysis"
     },
     {
       "title": "How does it work?",
       "overview": "More detail on how we setup your Weekly Allownace and Monthly Savings",
       "buttonTitle": "Tell me more",
-      "payload": "TELL_ME_MORE"
+      "payload": "tell_me_more"
     },
     {
       "title": "What can I expect?",
       "overview": "one week in the life of a Tchokin.in user with coach Tchok.",
       "buttonTitle": "Show me examples",
-      "payload": "SHOW_ME_EXAMPLES"
+      "payload": "show_me_examples"
     }
   ]
 
 let intent = (inputData, object, cb) => {
   let content = require('../contents/'+inputData.bot+'.json');
-  let localStorageData = {
-    userId: inputData.userId,
-    topic: 'GET_STARTED',
-    text: inputData.text,
-    platform: inputData.platform,
-    bot: inputData.bot,
-    postId: null
-  };
 
   let welcomeResponseText = content.get_started_one + '++' + content.get_started_two + '++' + content.get_started_three;
 

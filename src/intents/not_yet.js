@@ -3,13 +3,13 @@ import * as platformTemplate from '../datasource/platform_template.js';
 let intent = (inputData, object, cb) => {
   let content = require('../contents/'+inputData.bot+'.json');
 
-  let startAnalyisText = content.start_analysis_one + '++' + content.start_analysis_two;
+  let notYetText = content.not_yet_one + '++' + content.not_yet_two + "++" + content.not_yet_three;
 
-  platformTemplate.quickReplyButtonYesNotYet(inputData, function(quickReplyButtonsTemplate) {
+  platformTemplate.quickReplyButtonsIHaveThemHandyOrNot(inputData, function(quickReplyButtonsTemplate) {
     let outputData = {
       userId: inputData.userId,
-      responseType: 'TWO_TEXT_WITH_QUICK_REPLY',
-      responseText: startAnalyisText,
+      responseType: 'THREE_TEXT_WITH_QUICK_REPLY',
+      responseText: notYetText,
       responseImage: null,
       responseAudio: null,
       responseVideo: null,

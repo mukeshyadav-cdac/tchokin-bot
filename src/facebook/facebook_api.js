@@ -77,8 +77,10 @@ let sendQuickReplyMessage = (userId, text, quickReplyButtons, cb) => {
     json: fbData
   }, (error, response, body) => {
     if (error) {
+      console.log(error)
       cb();
     } else if (response.body.error) {
+      console.log(response.body.error)
       cb();
     } else {
       cb();
