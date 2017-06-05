@@ -1,6 +1,6 @@
 {
   "PORT": 5000,
-  "botmetrics": "",
+  "MONGODB_URI": "mongodb://heroku_vvxzwcdr:p3hu2gb90g6dcmg1buoa7bdqo7@ds163301.mlab.com:63301/heroku_vvxzwcdr",
   "facebook": {
     "facebook_url": "https://graph.facebook.com/v2.6",
     "verification_token": "this_is_tchokin_bot",

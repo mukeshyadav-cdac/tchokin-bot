@@ -1,5 +1,6 @@
 import request from 'request';
 import config from '../config.json';
+import User from '../models/user.js';
 
 let getProfileDetail = (userId, cb) => {
   request({
@@ -16,7 +17,19 @@ let getProfileDetail = (userId, cb) => {
       cb();
     } else {
       console.log("===Success===GetProfileDetail===",body);
-      cb(body);
+      User.findOne({userId: userId}, (err, user) => {
+        if (err) {
+          console.log(err)
+          cb();
+        } else if (user) {
+          cb(body)
+        } else {
+          let user = new User(Object.assign({}, body, {userId: userId}));
+          user.save((err, user) => {
+            cb(body);
+          });
+        }
+      });
     }
   });
 }
