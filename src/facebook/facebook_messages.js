@@ -51,7 +51,6 @@ let receivedPostbackMessage = (event) => {
 }
 
 let receivedQuickReplyMessage = (event) => {
-  console.log(event.message.quick_reply.payload);
   switch(event.message.quick_reply.payload) {
     case 'not_yet':
       let inputData = defineResponse(event, event.message.quick_reply.payload)

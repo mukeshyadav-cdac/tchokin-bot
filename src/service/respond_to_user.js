@@ -81,6 +81,7 @@ let respondToUser = (response) => {
           })
         }, 2000)
       });
+      break;
     case 'FALLBACK':
       facebookApi.sendTextMessage(response.userId, response.responseText, function(cb) {
         return;
