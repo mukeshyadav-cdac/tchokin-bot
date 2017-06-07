@@ -144,4 +144,38 @@ let senderAction = (userId, action) => {
   });
 }
 
-export { getProfileDetail, senderAction, sendTextMessage, sendQuickReplyMessage, sendGenericTemplate};
+let sendWebViewTemplate = (userId, text, elements, cb) => {
+  let fbData = {
+    recipient: {id: userId},
+    message: {
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "button",
+          "text": text,
+          "buttons": elements
+        }
+      }
+    }
+  }
+
+  request({
+    url: config.facebook.facebook_url+'/me/messages',
+    qs: {access_token: config.facebook.page_token},
+    method: 'POST',
+    json: fbData
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+      cb();
+    } else if (response.body.error) {
+      console.log('Error: SendGenericTemplate===', response.body.error);
+      cb();
+    } else {
+      console.log("===Success==SendGenericTemplate=");
+      cb();
+    }
+  });
+}
+
+export { getProfileDetail, senderAction, sendTextMessage, sendQuickReplyMessage, sendGenericTemplate, sendWebViewTemplate};

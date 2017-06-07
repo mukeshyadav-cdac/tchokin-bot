@@ -36,7 +36,6 @@ let getStartedButtonCallback =  (event) => {
   });
 }
 
-
 let receivedPostbackMessage = (event) => {
   switch(event.postback.payload) {
     case 'GET_STARTED_PAYLOAD':
@@ -52,13 +51,11 @@ let receivedPostbackMessage = (event) => {
 
 let receivedQuickReplyMessage = (event) => {
   switch(event.message.quick_reply.payload) {
-    case 'not_yet':
+    default:
       let inputData = defineResponse(event, event.message.quick_reply.payload)
       userInteraction(inputData, (outputData) => {
         respondToUser(outputData);
       });
-      break;
-    default:
   }
 }
 

@@ -16,7 +16,7 @@ let createGenericTemplate = (inputData, startList, genericTemplateCb) => {
   genericTemplateCb(genericTemplateArray);
 }
 
-let quickReplyButtonYesNotYet = (inputData, quickReplyCb) => {
+let quickReplyButtonsYesOrNotYet = (inputData, quickReplyCb) => {
   let quickReplyButtons = {
     "template": [
       {
@@ -29,29 +29,35 @@ let quickReplyButtonYesNotYet = (inputData, quickReplyCb) => {
         "title": "Not yet",
         "payload": "not_yet"
       }
-    ],
-    "text": "👇"
+    ]
   }
   quickReplyCb(quickReplyButtons);
 }
 
-let quickReplyButtonsIHaveThemHandyOrNot = (inputData, quickReplyCb) => {
+let quickReplyButtonsIHaveThemHandy = (inputData, quickReplyCb) => {
   let quickReplyButtons = {
     "template": [
       {
         "content_type": "text",
         "title": "I Have Them Handy",
         "payload": "i_have_them_handy"
-      },
-      {
-        "content_type": "text",
-        "title": "No",
-        "payload": "not_handy"
       }
-    ],
-    "text": "👇"
+    ]
   }
   quickReplyCb(quickReplyButtons);
 }
 
-export { createGenericTemplate, quickReplyButtonYesNotYet, quickReplyButtonsIHaveThemHandyOrNot };
+let createWebViewTemplate = (inputData, viewList, genericTemplateCb) => {
+  let genericTemplateArray = [];
+  viewList.forEach((value) => {
+    genericTemplateArray.push({
+      "type":"web_url",
+      "url": value.url,
+      "title": value.title,
+      "webview_height_ratio": "tall"
+    });
+  });
+  genericTemplateCb(genericTemplateArray);
+}
+
+export { createGenericTemplate, quickReplyButtonsYesOrNotYet, quickReplyButtonsIHaveThemHandy, createWebViewTemplate };

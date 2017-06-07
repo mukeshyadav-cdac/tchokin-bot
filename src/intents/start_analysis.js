@@ -5,7 +5,7 @@ let intent = (inputData, object, cb) => {
 
   let startAnalyisText = content.start_analysis_one + '++' + content.start_analysis_two;
 
-  platformTemplate.quickReplyButtonYesNotYet(inputData, function(quickReplyButtonsTemplate) {
+  platformTemplate.quickReplyButtonsYesOrNotYet(inputData, function(quickReplyButtonsTemplate) {
     let outputData = {
       userId: inputData.userId,
       responseType: 'TWO_TEXT_WITH_QUICK_REPLY',

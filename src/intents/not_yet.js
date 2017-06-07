@@ -5,7 +5,7 @@ let intent = (inputData, object, cb) => {
 
   let notYetText = content.not_yet_one + '++' + content.not_yet_two + "++" + content.not_yet_three;
 
-  platformTemplate.quickReplyButtonsIHaveThemHandyOrNot(inputData, function(quickReplyButtonsTemplate) {
+  platformTemplate.quickReplyButtonsIHaveThemHandy(inputData, function(quickReplyButtonsTemplate) {
     let outputData = {
       userId: inputData.userId,
       responseType: 'THREE_TEXT_WITH_QUICK_REPLY',

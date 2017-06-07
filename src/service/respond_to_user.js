@@ -1,5 +1,4 @@
 import * as facebookApi from '../facebook/facebook_api.js';
-import { textSpliter } from '../utility/text_spliter.js';
 import User from '../models/user.js';
 
 
@@ -29,16 +28,16 @@ let respondToUser = (response) => {
                         facebookApi.senderAction(response.userId, 'typing_off');
                         return;
                       });
-                    }, 2000);
+                    }, 3000);
                   })
-                }, 2000)
+                }, 3000)
               })
-            }, 2000)
+            }, 3000)
           });
         }
       });
       break;
-    case 'TWO_TEXT_WITH_QUICK_REPLY':
+    case 'THREE_TEXT_WITH_WEB_VIEW':
       var textMessage = response.responseText;
       var textMessageArray = textMessage.split("++");
       facebookApi.sendTextMessage(response.userId, textMessageArray[0], () => {
@@ -48,12 +47,25 @@ let respondToUser = (response) => {
           facebookApi.sendTextMessage(response.userId, textMessageArray[1], () => {
             facebookApi.senderAction(response.userId, 'typing_on');
             setTimeout(() =>{
-              facebookApi.sendQuickReplyMessage(response.userId, response.quickReplyButtons.text, response.quickReplyButtons.template, () =>{
+              facebookApi.sendWebViewTemplate(response.userId, textMessageArray[2], response.responseAttachment, (genericTemplateResponse) => {
                 facebookApi.senderAction(response.userId, 'typing_off');
                 return;
               });
-            }, 2000);
-          })
+            }, 3000);
+          });
+        }, 3000);
+      });
+      break;
+    case 'TWO_TEXT_WITH_QUICK_REPLY':
+      var textMessage = response.responseText;
+      var textMessageArray = textMessage.split("++");
+      facebookApi.sendTextMessage(response.userId, textMessageArray[0], () => {
+        facebookApi.senderAction(response.userId, 'typing_on');
+        setTimeout(() => {
+          facebookApi.senderAction(response.userId, 'typing_off');
+          facebookApi.sendQuickReplyMessage(response.userId, textMessageArray[1], response.quickReplyButtons.template, () =>{
+            return;
+          });
         }, 2000);
       });
       break;
@@ -62,24 +74,18 @@ let respondToUser = (response) => {
       var textMessageArray = textMessage.split("++");
       facebookApi.sendTextMessage(response.userId, textMessageArray[0], () => {
         facebookApi.senderAction(response.userId, 'typing_on');
-        setTimeout(() =>{
+        setTimeout(() => {
           facebookApi.senderAction(response.userId, 'typing_off');
           facebookApi.sendTextMessage(response.userId, textMessageArray[1], () => {
             facebookApi.senderAction(response.userId, 'typing_on');
             setTimeout(() => {
               facebookApi.senderAction(response.userId, 'typing_off');
-              facebookApi.sendTextMessage(response.userId, textMessageArray[2], () => {
-                facebookApi.senderAction(response.userId, 'typing_on');
-                setTimeout(() =>{
-                  facebookApi.sendQuickReplyMessage(response.userId, response.quickReplyButtons.text, response.quickReplyButtons.template, () =>{
-                    facebookApi.senderAction(response.userId, 'typing_off');
-                    return;
-                  });
-                }, 2000);
-              })
-            }, 2000)
-          })
-        }, 2000)
+              facebookApi.sendQuickReplyMessage(response.userId, textMessageArray[2], response.quickReplyButtons.template, () =>{
+                return;
+              });
+            }, 3000);
+          });
+        }, 3000);
       });
       break;
     case 'FALLBACK':

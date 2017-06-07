@@ -10,6 +10,11 @@
     "not_yet_two": "Ok, let's jump right in, then. we'll need about 5 minutes to set things up.",
     "not_yet_three": "Do you have access to codes to your online banking service handy. We'll need them.",
 
+    "i_have_them_handy_one": "OK, we're going to synchronize your account to Tchok.in using our trusted and very secure partner Budgea. ⛑",
+    "i_have_them_handy_two": "They'll help us retrieve all your recent transactions in order to analyze them.",
+    "i_have_them_handy_three": "Now is your turn. Tap Connect to enter your online banking Login ID and Password. Note: we won't save/store your credentials on our servers.",
+
+
     "bot_ask_category_topic": "Thanks! I will filter and prioritise news coming from {location} before all other news.",
     "before_location_msg": "📍Location helps me track and 🚨 alert you to the most relevant news around you. Would you like to share your location ?",
     "get_started": "🙋‍♂️👋 Welcome back! Ready to get some Goya dose...",
