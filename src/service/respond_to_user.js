@@ -5,7 +5,15 @@ import User from '../models/user.js';
 
 let respondToUser = (response) => {
   switch(response.responseType) {
-
+    case 'TEXT':
+      facebookApi.senderAction(response.userId, 'typing_on');
+      setTimeout(() => {
+        facebookApi.senderAction(response.userId, 'typing_off');
+        facebookApi.sendTextMessage(response.userId, response.responseText, () => {
+          return;
+        });
+      }, 3000)
+      break;
     case 'THREE_TEXT_WITH_GENERIC_TEMPLATE':
       User.findOne({userId: response.userId}, (err, user) => {
         if (err) {

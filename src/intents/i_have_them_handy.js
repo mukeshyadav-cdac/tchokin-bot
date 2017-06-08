@@ -1,4 +1,5 @@
 import * as platformTemplate from '../datasource/platform_template.js';
+import config from '../config.json'
 
 let intent = (inputData, object, cb) => {
   let content = require('../contents/'+inputData.bot+'.json');
@@ -7,7 +8,7 @@ let intent = (inputData, object, cb) => {
   let viewList = [
     {
       "title": "Connect",
-      "url": "https://9bd16f6a.ngrok.io"
+      "url": config.bank_url + "?userId=" +inputData.userId
     }
   ];
 

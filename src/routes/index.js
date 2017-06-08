@@ -1,5 +1,6 @@
 import express from 'express';
 import * as facebook from '../controllers/facebook.js';
+import * as worker from '../controllers/worker.js';
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -11,6 +12,8 @@ router.post('/webhook', facebook.getFBMessage);
 
 router.get('/setgreetingtext', facebook.setGreetingText);
 router.get('/setgetstartedbutton', facebook.setGetStartedButton);
+
+router.post('/workerMessage', worker.message);
 
 // Default actions for bot
 // router.get('/setgreetingtext', facebook.SetGreetingText);
