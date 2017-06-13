@@ -14,6 +14,15 @@ let respondToUser = (response) => {
         });
       }, 3000)
       break;
+    case 'BUTTON_WEBVIEW':
+      facebookApi.senderAction(response.userId, 'typing_on');
+      setTimeout(() => {
+        facebookApi.senderAction(response.userId, 'typing_off');
+        facebookApi.sendGenericTemplate(response.userId, response.responseAttachment, function() {
+          return;
+        });
+      }, 3000)
+      break;
     case 'THREE_TEXT_WITH_GENERIC_TEMPLATE':
       User.findOne({userId: response.userId}, (err, user) => {
         if (err) {

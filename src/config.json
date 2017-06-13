@@ -11,5 +11,5 @@
     "platform": "facebook",
     "bot": "tchokin"
   },
-  "bank_url": "https://49319fca.ngrok.io"
+  "bank_url": "localhost:7000"
 }

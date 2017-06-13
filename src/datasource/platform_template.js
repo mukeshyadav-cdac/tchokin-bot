@@ -1,3 +1,24 @@
+let createButtonWebViewTemplate = (inputData, templateData, genericTemplateCb) => {
+  let template =  {
+    "title": templateData.title,
+    "subtitle": templateData.subtitle,
+    "buttons": [
+      {
+        "type": "postback",
+        "title": templateData.buttonTitle,
+        "payload": templateData.payload
+      },
+      {
+        "type": "web_url",
+        "url": templateData.url,
+        "title": templateData.webTitle,
+        "webview_height_ratio": "tall"
+      }
+    ]
+  }
+  genericTemplateCb(genericTemplateArray);
+}
+
 let createGenericTemplate = (inputData, startList, genericTemplateCb) => {
   let genericTemplateArray = [];
   for(let i=0; i < startList.length; i++) {
@@ -60,4 +81,10 @@ let createWebViewTemplate = (inputData, viewList, genericTemplateCb) => {
   genericTemplateCb(genericTemplateArray);
 }
 
-export { createGenericTemplate, quickReplyButtonsYesOrNotYet, quickReplyButtonsIHaveThemHandy, createWebViewTemplate };
+export {
+  createGenericTemplate,
+  quickReplyButtonsYesOrNotYet,
+  quickReplyButtonsIHaveThemHandy,
+  createWebViewTemplate,
+  createButtonWebViewTemplate
+};
