@@ -45,7 +45,7 @@ let getSalary = (data, callback) => {
       subtitle: body.data + '/' + body.month,
       buttonTitle: 'Confirm',
       payload: 'salary_confirm',
-      url: config.bank_url + '/salary?' + data.userId,
+      url: config.bank_url + '/salary?userId=' + data.userId,
       webTitle: 'Not my salary'
     }
     intent(inputData, templateData, callback);
