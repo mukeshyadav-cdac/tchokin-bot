@@ -17,6 +17,8 @@
     "saleryPreOne": "Now, before we can set up your Weekly Allowance and your Monthly Savings targets, I have a few remaining questions regarding some of your transactions.",
     "saleryPreTwo": "Can you confirm that this transfer is your Salary?",
 
+    "rentPreOne": "Now, can you confirm that this payment is your Rent?",
+
     "bot_ask_category_topic": "Thanks! I will filter and prioritise news coming from {location} before all other news.",
     "before_location_msg": "📍Location helps me track and 🚨 alert you to the most relevant news around you. Would you like to share your location ?",
     "get_started": "🙋‍♂️👋 Welcome back! Ready to get some Goya dose...",
