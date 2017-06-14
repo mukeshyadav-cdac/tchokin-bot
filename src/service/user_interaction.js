@@ -14,7 +14,6 @@ let checkFileExists = (inputData, aiObject, fileCb) => {
   }
 }
 
-
 let userInteraction = (inputData, cb) => {
   if(!inputData.platform || !inputData.userId || !inputData.bot) {
     cb({"status": "error", "message": "Objects platform, userId and bot are required."});

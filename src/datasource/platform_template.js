@@ -1,5 +1,5 @@
 let createButtonWebViewTemplate = (inputData, templateData, genericTemplateCb) => {
-  let template =  {
+  let genericTemplateArray =  [{
     "title": templateData.title,
     "subtitle": templateData.subtitle,
     "buttons": [
@@ -15,7 +15,7 @@ let createButtonWebViewTemplate = (inputData, templateData, genericTemplateCb) =
         "webview_height_ratio": "tall"
       }
     ]
-  }
+  }]
   genericTemplateCb(genericTemplateArray);
 }
 

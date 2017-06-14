@@ -14,6 +14,8 @@
     "i_have_them_handy_two": "They'll help us retrieve all your recent transactions in order to analyze them.",
     "i_have_them_handy_three": "Now is your turn. Tap Connect to enter your online banking Login ID and Password. Note: we won't save/store your credentials on our servers.",
 
+    "saleryPreOne": "Now, before we can set up your Weekly Allowance and your Monthly Savings targets, I have a few remaining questions regarding some of your transactions.",
+    "saleryPreTwo": "Can you confirm that this transfer is your Salary?",
 
     "bot_ask_category_topic": "Thanks! I will filter and prioritise news coming from {location} before all other news.",
     "before_location_msg": "📍Location helps me track and 🚨 alert you to the most relevant news around you. Would you like to share your location ?",

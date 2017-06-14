@@ -1,8 +1,6 @@
 import * as facebookApi from '../facebook/facebook_api.js';
 import User from '../models/user.js';
 
-
-
 let respondToUser = (response) => {
   switch(response.responseType) {
     case 'TEXT':
