@@ -49,9 +49,6 @@ let message = (req, res) => {
       case 'rent':
         checkRentTrans(req.body);
         break;
-      case 'finish':
-        finish(req.body);
-        break;
     }
   }
   res.send(200);
