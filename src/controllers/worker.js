@@ -16,26 +16,26 @@ let checkSalaryTrans = (data) => {
         salary.getSalary({userId: data.userId, category: 'salary'}, (data) => {
           respondToUser(data)
         });
-      }, 4000);
-    }, 4000);
-  }, 4000);
+      }, 2500);
+    }, 2500);
+  }, 2500);
 }
 
 let checkRentTrans = (data) => {
   setTimeout(() => {
     respondToUser({userId: data.userId, responseText: content.rentPreOne, responseType: 'TEXT'});
     setTimeout(() => {
-      rent.getRent({userId: data.userId, category: 'salary'}, (data) => {
+      rent.getRent({userId: data.userId, category: 'R_trans'}, (data) => {
         respondToUser(data)
       });
-    }, 4000);
-  }, 4000);
+    }, 2500);
+  }, 2500);
 }
 
 let finish = (data) => {
   setTimeout(() => {
     respondToUser({userId: data.userId, responseText: content.rentPreOne, responseType: 'TEXT'});
-  }, 4000);
+  }, 2500);
 }
 
 let message = (req, res) => {
