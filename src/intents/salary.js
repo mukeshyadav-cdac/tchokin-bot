@@ -42,9 +42,9 @@ let getSalary = (data, callback) => {
     }
     let templateData = {
       title: body.amount + ' ' + body.paymentlabel,
-      subtitle: body.data + '/' + body.month,
+      subtitle: body.date + '/' + body.month,
       buttonTitle: 'Confirm',
-      payload: 'salary_confirm',
+      payload: 'rent',
       url: config.bank_url + '/salary?userId=' + data.userId,
       webTitle: 'Not my salary'
     }

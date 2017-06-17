@@ -2,29 +2,14 @@ import * as platformTemplate from '../datasource/platform_template.js';
 import request from 'request';
 import config from '../config.json';
 
-let intent = (inputData, templateData, cb) => {
+let intent = (inputData, object, cb) => {
   let content = require('../contents/'+inputData.bot+'.json');
-  platformTemplate.createButtonWebViewTemplate(inputData, templateData, function(quickReplyButtonsTemplate) {
-    let outputData = {
-      userId: inputData.userId,
-      responseType: 'BUTTON_WEBVIEW',
-      responseText: null,
-      responseImage: null,
-      responseAudio: null,
-      responseVideo: null,
-      responseAttachment: quickReplyButtonsTemplate,
-      quickReplyButtons: null
-    }
-    cb(outputData);
-  });
-};
-
-let getRent = (data, callback) => {
-  let postData = {
-    userId: data.userId,
-    category: data.category
-  }
   let url = config.bank_url + '/api/v1/getCategoryRecord';
+  let postData = {
+    userId: inputData.userId,
+    category: 'R_trans'
+  }
+  console.log('mukesh')
   request({
     url: url,
     method: 'POST',
@@ -36,20 +21,41 @@ let getRent = (data, callback) => {
     if (err) {
       console.error('error posting json: ', err)
     }
-    let inputData = {
-      bot: config.app.bot,
-      userId:  data.userId
-    }
+
     let templateData = {
       title: body.amount + ' ' + body.paymentlabel,
-      subtitle: body.data + '/' + body.month,
+      subtitle: body.date + '/' + body.month,
       buttonTitle: 'Confirm',
-      payload: 'salary_confirm',
-      url: config.bank_url + '/rent?userId=' + data.userId,
+      payload: 'rent_confirm',
+      url: config.bank_url + '/rent?userId=' + inputData.userId,
       webTitle: 'Not my rent payment'
     }
-    intent(inputData, templateData, callback);
-  })
+
+    platformTemplate.createButtonWebViewTemplate(inputData, templateData, function(quickReplyButtonsTemplate) {
+      let outputData = {
+        userId: inputData.userId,
+        responseType: 'BUTTON_WEBVIEW',
+        responseText: null,
+        responseImage: null,
+        responseAudio: null,
+        responseVideo: null,
+        responseAttachment: quickReplyButtonsTemplate,
+        quickReplyButtons: null
+      }
+      cb(outputData);
+    });
+  });
 };
+
+let getRent = (data, callback) => {
+  let aiObject = {
+    intent: 'rent'
+  }
+  let inputData = {
+    bot: config.app.bot,
+    userId:  data.userId
+  }
+  intent(inputData, aiObject, callback);
+}
 
 export { intent, getRent };
